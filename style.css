@@ -1,0 +1,271 @@
+@import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400..800;1,400..800&family=Plus+Jakarta+Sans:ital,wght@0,300..700;1,300..700&display=swap');
+
+:root {
+  --primary-color: #2F4E3F;      /* Forest Sage Green */
+  --primary-light: #4A735E;
+  --primary-dark: #1E3429;
+  --gold-accent: #C5A059;       /* Muted Champagne Gold */
+  --gold-light: #DFBF7E;
+  --gold-dark: #9F7E3B;
+  --bg-cream: #FAF8F5;          /* Warm Alabaster */
+  --card-bg: #FFFFFF;
+  --text-main: #242E28;
+  --text-muted: #64746B;
+  --border-soft: #E8E4DC;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: #17221C; /* Dark luxury backdrop for desktop viewing */
+  color: var(--text-main);
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+/* Mobile Container Framing for Desktop */
+.app-container {
+  max-width: 480px;
+  min-height: 100vh;
+  margin: 0 auto;
+  background-color: var(--bg-cream);
+  position: relative;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.4);
+  overflow-x: hidden;
+}
+
+/* Typography Helpers */
+.font-serif {
+  font-family: 'Playfair Display', serif;
+}
+
+.font-script {
+  font-family: 'Great Vibes', cursive;
+}
+
+.font-arabic {
+  font-family: 'Amiri', serif;
+  direction: rtl;
+}
+
+/* Background Patterns (Zero-Asset SVG Patterns via patterncraft) */
+.pattern-dots {
+  background-image: radial-gradient(rgba(47, 78, 63, 0.08) 1.5px, transparent 1.5px);
+  background-size: 16px 16px;
+}
+
+.pattern-islamic {
+  background-color: var(--bg-cream);
+  background-image: radial-gradient(var(--gold-accent) 0.75px, transparent 0.75px), radial-gradient(var(--primary-color) 0.75px, var(--bg-cream) 0.75px);
+  background-size: 30px 30px;
+  background-position: 0 0, 15px 15px;
+  background-opacity: 0.05;
+}
+
+/* Glassmorphism & Cards */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(229, 231, 235, 0.6);
+}
+
+.card-luxury {
+  background: #FFFFFF;
+  border-radius: 1.5rem;
+  border: 1px solid rgba(197, 160, 89, 0.25);
+  box-shadow: 0 10px 30px -5px rgba(47, 78, 63, 0.06), 0 4px 6px -2px rgba(47, 78, 63, 0.02);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Arch Frame Shape for Baby Photos */
+.arch-frame {
+  border-top-left-radius: 9999px;
+  border-top-right-radius: 9999px;
+  border-bottom-left-radius: 1.5rem;
+  border-bottom-right-radius: 1.5rem;
+  overflow: hidden;
+}
+
+.gold-ring {
+  box-shadow: 0 0 0 4px #FFFFFF, 0 0 0 6px var(--gold-accent), 0 12px 24px -4px rgba(47, 78, 63, 0.15);
+}
+
+/* Animations */
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes floatGentle {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-7px); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(197, 160, 89, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(197, 160, 89, 0);
+  }
+}
+
+.animate-spin-slow {
+  animation: spinSlow 14s linear infinite;
+}
+
+.animate-float {
+  animation: floatGentle 4s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 2.5s infinite;
+}
+
+/* Envelope Cover Overlay */
+#cover-overlay {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 480px;
+  height: 100vh;
+  z-index: 100;
+  background-color: #FAF8F5;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.6s ease;
+  will-change: transform, opacity;
+}
+
+#cover-overlay.opened {
+  transform: translate(-50%, -100%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Floating Music Player Button */
+.music-toggle-btn {
+  position: fixed;
+  bottom: 84px;
+  right: calc(50% - 220px);
+  z-index: 80;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  border: 1.5px solid var(--gold-accent);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--primary-color);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease;
+}
+
+@media (max-width: 480px) {
+  .music-toggle-btn {
+    right: 18px;
+  }
+}
+
+.music-toggle-btn:active {
+  transform: scale(0.92);
+}
+
+/* Bottom Navigation Dock */
+.bottom-nav-dock {
+  position: fixed;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 28px);
+  max-width: 440px;
+  height: 58px;
+  z-index: 70;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(197, 160, 89, 0.3);
+  border-radius: 9999px;
+  box-shadow: 0 10px 25px -3px rgba(30, 52, 41, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0 6px;
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  font-size: 10px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  width: 52px;
+  height: 46px;
+  border-radius: 9999px;
+}
+
+.nav-item.active, .nav-item:hover {
+  color: var(--primary-color);
+  background: rgba(47, 78, 63, 0.08);
+  font-weight: 700;
+}
+
+.nav-item svg {
+  width: 18px;
+  height: 18px;
+  margin-bottom: 2px;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #FAF8F5;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--gold-accent);
+  border-radius: 9999px;
+}
+
+/* Toast Notification */
+#toast-box {
+  position: fixed;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-100px);
+  background: var(--primary-dark);
+  color: #FFFFFF;
+  padding: 12px 22px;
+  border-radius: 9999px;
+  font-size: 13px;
+  font-weight: 600;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 200;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+  opacity: 0;
+  pointer-events: none;
+}
+
+#toast-box.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}

@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Undangan Tasyakuran & Aqiqah Khamila Safa Ihza</title>
+  
+  <!-- Open Graph / Meta Sharing -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Tasyakuran & Aqiqah Khamila Safa Ihza">
+  <meta property="og:description" content="Dengan memohon Ridho dan Rahmat Allah SWT, kami mengundang Bapak/Ibu/Saudara/i untuk menghadiri acara Tasyakuran & Aqiqah putri kami.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1519689680058-324335c77eba?auto=format&fit=crop&w=1200&q=80">
+  <meta name="theme-color" content="#2F4E3F">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            sage: {
+              50: '#F4F7F4',
+              100: '#E5EDE6',
+              200: '#CBDBCF',
+              600: '#3B5A48',
+              700: '#2F4E3F',
+              800: '#243C30',
+              900: '#182720',
+            },
+            champagne: {
+              400: '#DFBF7E',
+              500: '#C5A059',
+              600: '#A9833D',
+            },
+            alabaster: '#FAF8F5',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-[#17221C] text-stone-800 antialiased selection:bg-emerald-800 selection:text-white">
+
+  <!-- ============================================================ -->
+  <!-- TOAST NOTIFICATION                                           -->
+  <!-- ============================================================ -->
+  <div id="toast-box">
+    <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i>
+    <span id="toast-msg">Teks berhasil disalin!</span>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- AUDIO PLAYER (HIDDEN)                                        -->
+  <!-- ============================================================ -->
+  <audio id="bg-audio" loop preload="auto">
+    <!-- Instrumen Kalem & Syahdu Bebas Copyright -->
+    <source src="https://media.indoinvite.com/2db3bf1e16cd47a08843bb881e39cce7:indoinvite-staging/indoinvite-staging/indoinvite-staging/nikah/theme/music/1662443865.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- ============================================================ -->
+  <!-- FLOATING MUSIC TOGGLE BUTTON                                 -->
+  <!-- ============================================================ -->
+  <button id="music-toggle" class="music-toggle-btn group" title="Putar / Hentikan Musik" aria-label="Toggle Musik">
+    <div id="music-disc" class="w-full h-full rounded-full flex items-center justify-center">
+      <span id="music-icon">
+        <i data-lucide="play" class="w-4 h-4 text-emerald-800 ml-0.5"></i>
+      </span>
+    </div>
+  </button>
+
+  <!-- ============================================================ -->
+  <!-- COVER OVERLAY (AMPLOP PEMBUKA)                               -->
+  <!-- ============================================================ -->
+  <div id="cover-overlay" class="pattern-dots flex flex-col justify-between p-6 sm:p-8 text-center">
+    <!-- Top Floral Ornament -->
+    <div class="pt-4 flex justify-center">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-900/5 border border-emerald-900/10 text-emerald-800 text-[11px] font-semibold tracking-widest uppercase">
+        <i data-lucide="sparkles" class="w-3.5 h-3.5 text-champagne-500"></i>
+        <span>Walimatul 'Aqiqah</span>
+        <i data-lucide="sparkles" class="w-3.5 h-3.5 text-champagne-500"></i>
+      </div>
+    </div>
+
+    <!-- Middle Hero Content -->
+    <div class="my-auto py-6 space-y-4">
+      <div class="relative w-44 h-56 mx-auto arch-frame gold-ring bg-stone-200 overflow-hidden shadow-2xl">
+        <img 
+          src="https://images.unsplash.com/photo-1519689680058-324335c77eba?auto=format&fit=crop&w=600&q=80" 
+          alt="Foto Bayi" 
+          class="w-full h-full object-cover transform hover:scale-105 transition duration-700"
+        >
+        <div class="absolute inset-0 bg-gradient-to-t from-emerald-950/40 via-transparent to-transparent"></div>
+      </div>
+
+      <div class="space-y-1">
+        <p class="text-xs uppercase tracking-[0.25em] text-stone-500 font-medium">Tasyakuran & Aqiqah</p>
+        <h1 class="font-serif text-2xl sm:text-3xl text-emerald-900 font-bold tracking-tight">Khamila Safa Ihza</h1>
+        <p class="font-script text-2xl text-champagne-600">Dede Mila</p>
+      </div>
+
+      <!-- Recipient Box -->
+      <div class="max-w-[280px] mx-auto p-3.5 rounded-2xl bg-white/90 border border-emerald-900/10 shadow-sm backdrop-blur-sm space-y-1">
+        <p class="text-[11px] text-stone-500 uppercase tracking-wider font-medium">Kepada Yth. Bapak/Ibu/Saudara/i:</p>
+        <div class="recipient-name font-semibold text-sm sm:text-base text-emerald-900 truncate">
+          Bapak / Ibu / Saudara/i
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Action Button -->
+    <div class="pb-6">
+      <button 
+        onclick="openInvitation()" 
+        class="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-emerald-800 text-white font-medium text-xs tracking-wider uppercase shadow-xl hover:bg-emerald-900 active:scale-95 transition-all duration-300 animate-pulse-glow"
+      >
+        <i data-lucide="mail-open" class="w-4 h-4 text-champagne-400"></i>
+        <span>Buka Undangan</span>
+      </button>
+      <p class="text-[10px] text-stone-400 mt-3 font-normal">*Sentuh untuk membuka dan memutar audio</p>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- MOBILE WRAPPER CONTAINER                                     -->
+  <!-- ============================================================ -->
+  <main class="app-container shadow-2xl relative pb-28">
+
+    <!-- ========================================== -->
+    <!-- SECTION 1: PEMBUKA & AYAT                  -->
+    <!-- ========================================== -->
+    <section id="pembuka" class="pattern-islamic p-6 sm:p-8 text-center relative overflow-hidden">
+      <!-- Basmalah Calligraphy -->
+      <div class="pt-6 pb-4">
+        <div class="font-arabic text-2xl sm:text-3xl text-emerald-900 leading-relaxed font-bold">
+          بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
+        </div>
+        <p class="text-xs text-stone-500 mt-2 font-medium">Assalamu'alaikum Warahmatullahi Wabarakatuh</p>
+      </div>
+
+      <div class="card-luxury p-6 my-4 space-y-3">
+        <i data-lucide="quote" class="w-5 h-5 text-champagne-500 mx-auto opacity-70"></i>
+        <p class="text-xs text-stone-600 leading-relaxed italic">
+          "Setiap anak tergadai dengan aqiqahnya, disembelihkan untuknya pada hari ketujuh, dicukur rambutnya, dan diberi nama."
+        </p>
+        <div class="text-[11px] font-semibold text-emerald-800 uppercase tracking-wider">
+          (HR. Abu Daud, Tirmidzi, & Ibnu Majah)
+        </div>
+      </div>
+
+      <p class="text-xs text-stone-600 leading-relaxed max-w-sm mx-auto pt-2">
+        Dengan memohon rahmat dan ridho Allah SWT, kami bermaksud menyelenggarakan acara tasyakuran dan aqiqah putri kami tercinta:
+      </p>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- SECTION 2: PROFIL BAYI & ORANG TUA        -->
+    <!-- ========================================== -->
+    <section id="profil" class="p-6 sm:p-8 bg-white/70 space-y-6 text-center">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 text-[11px] font-semibold uppercase tracking-wider">
+        <i data-lucide="baby" class="w-3.5 h-3.5 text-champagne-600"></i>
+        <span>Buah Hati Tercinta</span>
+      </div>
+
+      <!-- Baby Photo Frame -->
+      <div class="relative w-48 h-60 mx-auto arch-frame gold-ring bg-stone-100 overflow-hidden shadow-xl">
+        <img 
+          src="https://images.unsplash.com/photo-1519689680058-324335c77eba?auto=format&fit=crop&w=600&q=80" 
+          alt="Foto Khamila Safa Ihza" 
+          class="w-full h-full object-cover"
+        >
+      </div>
+
+      <!-- Baby Details -->
+      <div class="space-y-2">
+        <h2 class="font-serif text-2xl sm:text-3xl font-bold text-emerald-950">Khamila Safa Ihza</h2>
+        <p class="font-script text-2xl text-champagne-600">Panggilan: Dede Mila</p>
+        <p class="text-xs text-stone-500">Lahir: Minggu, 02 Juli 2023 | Pukul 06:15 WIB</p>
+      </div>
+
+      <!-- Baby Stat Badges -->
+      <div class="grid grid-cols-2 gap-3 max-w-xs mx-auto pt-1">
+        <div class="p-3 rounded-2xl bg-stone-50 border border-stone-200/60 flex items-center gap-2.5">
+          <div class="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-800">
+            <i data-lucide="scale" class="w-4 h-4"></i>
+          </div>
+          <div class="text-left">
+            <div class="text-[10px] text-stone-400 font-medium">Berat Lahir</div>
+            <div class="text-xs font-bold text-stone-700">3.200 Gram</div>
+          </div>
+        </div>
+        <div class="p-3 rounded-2xl bg-stone-50 border border-stone-200/60 flex items-center gap-2.5">
+          <div class="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-800">
+            <i data-lucide="ruler" class="w-4 h-4"></i>
+          </div>
+          <div class="text-left">
+            <div class="text-[10px] text-stone-400 font-medium">Panjang Lahir</div>
+            <div class="text-xs font-bold text-stone-700">49 cm</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Parents Bio -->
+      <div class="card-luxury p-5 mt-4 space-y-1.5">
+        <p class="text-[11px] text-stone-500 uppercase tracking-widest font-medium">Putri Pertama Dari Pasangan:</p>
+        <div class="font-serif text-base font-bold text-emerald-900">
+          Adi Susanto <span class="text-champagne-500 font-normal">&</span> Tin Marnita Sari
+        </div>
+        <p class="text-[11px] text-stone-500 italic pt-1">
+          Semoga ananda tumbuh menjadi anak yang shalihah, berbakti kepada orang tua, cerdas, dan berguna bagi agama serta bangsa.
+        </p>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- SECTION 3: RUNDOWN ACARA & COUNTDOWN       -->
+    <!-- ========================================== -->
+    <section id="acara" class="p-6 sm:p-8 bg-emerald-900 text-white relative overflow-hidden">
+      <div class="absolute -top-10 -right-10 w-40 h-40 bg-emerald-800/40 rounded-full blur-2xl"></div>
+      <div class="absolute -bottom-10 -left-10 w-40 h-40 bg-champagne-500/10 rounded-full blur-2xl"></div>
+
+      <div class="relative z-10 text-center space-y-5">
+        <div class="space-y-1">
+          <span class="text-[11px] uppercase tracking-[0.2em] text-champagne-400 font-semibold">Save The Date</span>
+          <h2 class="font-serif text-2xl font-bold">Waktu & Lokasi Acara</h2>
+        </div>
+
+        <!-- Countdown Box -->
+        <div class="grid grid-cols-4 gap-2 max-w-xs mx-auto py-2">
+          <div class="p-2.5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/10 text-center">
+            <span id="cd-days" class="block font-serif text-xl sm:text-2xl font-bold text-champagne-300">00</span>
+            <span class="text-[9px] uppercase tracking-wider text-stone-300 font-medium">Hari</span>
+          </div>
+          <div class="p-2.5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/10 text-center">
+            <span id="cd-hours" class="block font-serif text-xl sm:text-2xl font-bold text-champagne-300">00</span>
+            <span class="text-[9px] uppercase tracking-wider text-stone-300 font-medium">Jam</span>
+          </div>
+          <div class="p-2.5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/10 text-center">
+            <span id="cd-minutes" class="block font-serif text-xl sm:text-2xl font-bold text-champagne-300">00</span>
+            <span class="text-[9px] uppercase tracking-wider text-stone-300 font-medium">Menit</span>
+          </div>
+          <div class="p-2.5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/10 text-center">
+            <span id="cd-seconds" class="block font-serif text-xl sm:text-2xl font-bold text-champagne-300">00</span>
+            <span class="text-[9px] uppercase tracking-wider text-stone-300 font-medium">Detik</span>
+          </div>
+        </div>
+
+        <!-- Add to Google Calendar Button -->
+        <a 
+          href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Tasyakuran+%26+Aqiqah+Khamila+Safa+Ihza&dates=20261115T020000Z/20261115T070000Z&details=Acara+Tasyakuran+dan+Aqiqah+Putri+Tercinta+Khamila+Safa+Ihza&location=Jl.+Kopral+Ramli+Blok+G+No.66+Rt.30,+Kel.+Talang+Bakung,+Kec.+Pal+Merah,+Kota+Jambi"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/15 hover:bg-white/25 border border-white/20 text-xs font-medium text-stone-100 transition active:scale-95"
+        >
+          <i data-lucide="calendar-plus" class="w-3.5 h-3.5 text-champagne-400"></i>
+          <span>Simpan ke Google Calendar</span>
+        </a>
+
+        <!-- Event Cards -->
+        <div class="space-y-3.5 text-left pt-3">
+          <!-- Session 1 -->
+          <div class="p-4 rounded-2xl bg-emerald-950/60 border border-emerald-700/40 space-y-1.5">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-champagne-400 flex items-center gap-1.5">
+                <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+                <span>Tausiyah & Cukur Rambut</span>
+              </span>
+              <span class="px-2 py-0.5 rounded-full text-[10px] bg-emerald-800 text-stone-200">Sesi 1</span>
+            </div>
+            <div class="text-xs text-stone-200 flex items-center gap-1.5">
+              <i data-lucide="clock" class="w-3.5 h-3.5 text-champagne-400"></i>
+              <span>Pukul 09:00 - 10:30 WIB</span>
+            </div>
+            <p class="text-[11px] text-stone-300">Pembacaan Maulid, Tausiyah Singkat, Doa Bersama, dan Prosesi Pemotongan Rambut Bayi.</p>
+          </div>
+
+          <!-- Session 2 -->
+          <div class="p-4 rounded-2xl bg-emerald-950/60 border border-emerald-700/40 space-y-1.5">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-champagne-400 flex items-center gap-1.5">
+                <i data-lucide="utensils" class="w-3.5 h-3.5"></i>
+                <span>Ramah Tamah & Santap Siang</span>
+              </span>
+              <span class="px-2 py-0.5 rounded-full text-[10px] bg-emerald-800 text-stone-200">Sesi 2</span>
+            </div>
+            <div class="text-xs text-stone-200 flex items-center gap-1.5">
+              <i data-lucide="clock" class="w-3.5 h-3.5 text-champagne-400"></i>
+              <span>Pukul 10:30 WIB - Selesai</span>
+            </div>
+            <p class="text-[11px] text-stone-300">Pemberian ucapan selamat kepada keluarga besar dan santap hidangan bersama.</p>
+          </div>
+
+          <!-- Venue & Address -->
+          <div class="p-4 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 space-y-3">
+            <div class="flex items-start gap-3">
+              <div class="w-8 h-8 rounded-full bg-champagne-500/20 text-champagne-400 flex items-center justify-center shrink-0 mt-0.5">
+                <i data-lucide="map-pin" class="w-4 h-4"></i>
+              </div>
+              <div class="space-y-1">
+                <div class="text-xs font-bold text-stone-100">Kediaman Mempelai / Tuan Rumah</div>
+                <p class="text-[11px] text-stone-300 leading-relaxed">
+                  Jl. Kopral Ramli Blok G No.66 Rt.30, Kel. Talang Bakung, Kec. Pal Merah, Kota Jambi.
+                </p>
+              </div>
+            </div>
+
+            <!-- Buttons -->
+            <div class="flex items-center gap-2 pt-1">
+              <a 
+                href="https://maps.app.goo.gl/Z9s15e2QD6qgYjPXA" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                class="flex-1 py-2.5 rounded-xl bg-champagne-500 hover:bg-champagne-600 text-stone-900 font-semibold text-xs flex items-center justify-center gap-1.5 shadow-md active:scale-95 transition"
+              >
+                <i data-lucide="navigation" class="w-3.5 h-3.5"></i>
+                <span>Buka Google Maps</span>
+              </a>
+              <button 
+                onclick="copyText('Jl. Kopral Ramli Blok G No.66 Rt.30, Kel. Talang Bakung, Kec. Pal Merah, Kota Jambi', 'Alamat')"
+                class="px-3.5 py-2.5 rounded-xl bg-white/15 hover:bg-white/25 text-stone-100 text-xs font-medium flex items-center gap-1 active:scale-95 transition"
+                title="Salin Alamat"
+              >
+                <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+                <span>Salin</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- SECTION 4: GALERI FOTO                     -->
+    <!-- ========================================== -->
+    <section id="galeri" class="p-6 sm:p-8 bg-stone-50 space-y-4 text-center">
+      <div class="space-y-1">
+        <span class="text-[11px] uppercase tracking-[0.2em] text-champagne-600 font-semibold">Our Little Angel</span>
+        <h2 class="font-serif text-2xl font-bold text-emerald-950">Galeri Foto Momen</h2>
+        <p class="text-xs text-stone-500">Kumpulan potret bahagia dede bayi Khamila Safa Ihza</p>
+      </div>
+
+      <!-- Bento / Masonry Gallery Grid -->
+      <div class="grid grid-cols-2 gap-2.5 pt-2">
+        <div class="col-span-2 relative h-48 rounded-2xl overflow-hidden shadow-sm cursor-pointer group">
+          <img 
+            src="https://images.unsplash.com/photo-1519689680058-324335c77eba?auto=format&fit=crop&w=800&q=80" 
+            alt="Momen 1" 
+            class="gallery-thumb w-full h-full object-cover group-hover:scale-105 transition duration-500"
+          >
+          <div class="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition"></div>
+        </div>
+        <div class="relative h-36 rounded-2xl overflow-hidden shadow-sm cursor-pointer group">
+          <img 
+            src="https://images.unsplash.com/photo-1555252333-9f8e92e65df9?auto=format&fit=crop&w=500&q=80" 
+            alt="Momen 2" 
+            class="gallery-thumb w-full h-full object-cover group-hover:scale-105 transition duration-500"
+          >
+        </div>
+        <div class="relative h-36 rounded-2xl overflow-hidden shadow-sm cursor-pointer group">
+          <img 
+            src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&w=500&q=80" 
+            alt="Momen 3" 
+            class="gallery-thumb w-full h-full object-cover group-hover:scale-105 transition duration-500"
+          >
+        </div>
+      </div>
+      <p class="text-[10px] text-stone-400 italic">*Ketuk foto untuk memperbesar tampilan</p>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- SECTION 5: RSVP & BUKU TAMU               -->
+    <!-- ========================================== -->
+    <section id="rsvp" class="p-6 sm:p-8 bg-white space-y-6">
+      <div class="text-center space-y-1">
+        <span class="text-[11px] uppercase tracking-[0.2em] text-champagne-600 font-semibold">Konfirmasi & Doa</span>
+        <h2 class="font-serif text-2xl font-bold text-emerald-950">RSVP & Buku Tamu</h2>
+        <p class="text-xs text-stone-500">Kirimkan doa dan konfirmasi kehadiran Anda untuk acara kami</p>
+      </div>
+
+      <!-- RSVP Form -->
+      <form id="rsvp-form" class="card-luxury p-5 space-y-3.5 bg-stone-50/70">
+        <div>
+          <label class="block text-xs font-semibold text-stone-700 mb-1">Nama Lengkap</label>
+          <input 
+            type="text" 
+            id="rsvp-name" 
+            placeholder="Masukkan nama Anda" 
+            required 
+            class="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 text-xs focus:ring-2 focus:ring-emerald-700 focus:outline-none bg-white"
+          >
+        </div>
+
+        <div class="grid grid-cols-2 gap-2.5">
+          <div>
+            <label class="block text-xs font-semibold text-stone-700 mb-1">Konfirmasi Kehadiran</label>
+            <select 
+              id="rsvp-status" 
+              class="w-full px-3 py-2.5 rounded-xl border border-stone-200 text-xs focus:ring-2 focus:ring-emerald-700 focus:outline-none bg-white"
+            >
+              <option value="Hadir">InsyaAllah Hadir</option>
+              <option value="Tidak Hadir">Belum Bisa Hadir</option>
+              <option value="Masih Ragu">Masih Ragu</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-stone-700 mb-1">Jumlah Hadir</label>
+            <select 
+              id="rsvp-count" 
+              class="w-full px-3 py-2.5 rounded-xl border border-stone-200 text-xs focus:ring-2 focus:ring-emerald-700 focus:outline-none bg-white"
+            >
+              <option value="1">1 Orang</option>
+              <option value="2">2 Orang</option>
+              <option value="3">3 Orang</option>
+              <option value="4+">4+ Orang</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-stone-700 mb-1">Untaian Doa & Ucapan</label>
+          <textarea 
+            id="rsvp-message" 
+            rows="3" 
+            placeholder="Tuliskan doa terbaik untuk ananda tercinta..." 
+            required 
+            class="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 text-xs focus:ring-2 focus:ring-emerald-700 focus:outline-none bg-white resize-none"
+          ></textarea>
+        </div>
+
+        <button 
+          type="submit" 
+          class="w-full py-3 rounded-xl bg-emerald-800 hover:bg-emerald-900 text-white font-semibold text-xs tracking-wider uppercase shadow-md active:scale-98 transition flex items-center justify-center gap-2"
+        >
+          <i data-lucide="send" class="w-3.5 h-3.5 text-champagne-400"></i>
+          <span>Kirim Konfirmasi & Doa</span>
+        </button>
+      </form>
+
+      <!-- Wishes List Container -->
+      <div class="space-y-3 pt-2">
+        <div class="flex items-center justify-between text-xs text-stone-500 font-medium">
+          <span>Doa Dari Tamu Undangan</span>
+          <span class="text-emerald-800 font-bold flex items-center gap-1">
+            <i data-lucide="heart" class="w-3.5 h-3.5 text-rose-500 fill-rose-500"></i>
+            <span>Buku Tamu</span>
+          </span>
+        </div>
+        <div id="wishes-list" class="space-y-2.5 max-h-72 overflow-y-auto pr-1">
+          <!-- Populated by script.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- SECTION 6: TANDA KASIH / AMPLOP DIGITAL    -->
+    <!-- ========================================== -->
+    <section id="hadiah" class="p-6 sm:p-8 bg-stone-100/70 space-y-5 text-center">
+      <div class="space-y-1">
+        <span class="text-[11px] uppercase tracking-[0.2em] text-champagne-600 font-semibold">Tanda Kasih</span>
+        <h2 class="font-serif text-2xl font-bold text-emerald-950">Amplop & Kado Digital</h2>
+        <p class="text-xs text-stone-600 leading-relaxed max-w-xs mx-auto">
+          Doa restu Anda merupakan karunia terindah bagi kami. Namun jika ingin memberikan tanda kasih untuk ananda, dapat melalui:
+        </p>
+      </div>
+
+      <!-- Bank Cards -->
+      <div class="space-y-3.5 max-w-sm mx-auto">
+        <!-- Card Bank Syariah Indonesia (BSI) -->
+        <div class="card-luxury p-5 text-left relative overflow-hidden bg-gradient-to-br from-white to-emerald-50/50">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-xs font-bold text-emerald-800 tracking-wider">BANK SYARIAH INDONESIA (BSI)</span>
+            <i data-lucide="credit-card" class="w-5 h-5 text-emerald-700"></i>
+          </div>
+          <div class="text-[11px] text-stone-400">Nomor Rekening</div>
+          <div class="font-mono text-base font-bold text-stone-800 tracking-wider my-0.5">7192830192</div>
+          <div class="text-xs text-stone-600 mb-3">a.n. <span class="font-semibold text-emerald-900">Adi Susanto</span></div>
+          
+          <button 
+            onclick="copyText('7192830192', 'Nomor Rekening BSI')" 
+            class="w-full py-2 rounded-xl bg-emerald-800 hover:bg-emerald-900 text-white text-xs font-medium flex items-center justify-center gap-1.5 active:scale-95 transition shadow-sm"
+          >
+            <i data-lucide="copy" class="w-3.5 h-3.5 text-champagne-400"></i>
+            <span>Salin Nomor Rekening BSI</span>
+          </button>
+        </div>
+
+        <!-- Card Bank Central Asia (BCA) -->
+        <div class="card-luxury p-5 text-left relative overflow-hidden bg-gradient-to-br from-white to-blue-50/40">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-xs font-bold text-blue-900 tracking-wider">BANK BCA</span>
+            <i data-lucide="credit-card" class="w-5 h-5 text-blue-800"></i>
+          </div>
+          <div class="text-[11px] text-stone-400">Nomor Rekening</div>
+          <div class="font-mono text-base font-bold text-stone-800 tracking-wider my-0.5">8415291038</div>
+          <div class="text-xs text-stone-600 mb-3">a.n. <span class="font-semibold text-blue-950">Tin Marnita Sari</span></div>
+          
+          <button 
+            onclick="copyText('8415291038', 'Nomor Rekening BCA')" 
+            class="w-full py-2 rounded-xl bg-blue-900 hover:bg-blue-950 text-white text-xs font-medium flex items-center justify-center gap-1.5 active:scale-95 transition shadow-sm"
+          >
+            <i data-lucide="copy" class="w-3.5 h-3.5 text-champagne-400"></i>
+            <span>Salin Nomor Rekening BCA</span>
+          </button>
+        </div>
+
+        <!-- Konfirmasi via WhatsApp -->
+        <a 
+          href="https://wa.me/6281586663312?text=Assalamu%27alaikum%20saya%20sudah%20mengirimkan%20tanda%20kasih%20untuk%20Aqiqah%20Khamila%20Safa%20Ihza" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold shadow-md active:scale-95 transition"
+        >
+          <i data-lucide="message-circle" class="w-4 h-4"></i>
+          <span>Konfirmasi Tanda Kasih via WhatsApp</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- SECTION 7: FITUR LINK GENERATOR            -->
+    <!-- ========================================== -->
+    <section class="p-6 sm:p-8 bg-white border-t border-stone-200/60 space-y-4">
+      <div class="p-4 rounded-2xl bg-emerald-50/60 border border-emerald-900/10 space-y-2.5">
+        <div class="flex items-center gap-2 text-emerald-900 font-bold text-xs">
+          <i data-lucide="link" class="w-4 h-4 text-champagne-600"></i>
+          <span>Buat Link Undangan Khusus (Kpd Tamu)</span>
+        </div>
+        <p class="text-[11px] text-stone-600 leading-relaxed">
+          Ketikkan nama tamu di bawah untuk menghasilkan link personalisasi otomatis yang siap dibagikan ke WhatsApp.
+        </p>
+
+        <div class="space-y-2">
+          <input 
+            type="text" 
+            id="gen-guest-name" 
+            placeholder="Contoh: Bapak Ir. H. Syamsul Maarif" 
+            class="w-full px-3 py-2 rounded-xl border border-stone-300 text-xs bg-white focus:outline-none focus:ring-2 focus:ring-emerald-700"
+          >
+          <button 
+            type="button" 
+            onclick="generateCustomLink()" 
+            class="w-full py-2.5 rounded-xl bg-emerald-800 hover:bg-emerald-900 text-white text-xs font-semibold flex items-center justify-center gap-1.5 active:scale-95 transition"
+          >
+            <i data-lucide="share-2" class="w-3.5 h-3.5 text-champagne-400"></i>
+            <span>Salin Link Personalisasi</span>
+          </button>
+        </div>
+
+        <div id="gen-link-result" class="hidden p-2.5 rounded-lg bg-white border border-stone-200 text-[11px] font-mono text-emerald-800 break-all select-all"></div>
+        <a id="gen-wa-share" href="#" target="_blank" class="hidden w-full py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold flex items-center justify-center gap-1.5 transition">
+          <i data-lucide="send" class="w-3.5 h-3.5"></i>
+          <span>Buka & Bagikan Langsung ke WhatsApp</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- SECTION 8: PENUTUP & KELUARGA BESAR        -->
+    <!-- ========================================== -->
+    <section class="p-6 sm:p-8 bg-stone-50 text-center space-y-4">
+      <p class="text-xs text-stone-600 leading-relaxed max-w-sm mx-auto">
+        Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan doa selamat bagi putri kami.
+      </p>
+
+      <div class="space-y-1 pt-2">
+        <p class="text-xs text-stone-500 uppercase tracking-widest font-medium">Keluarga Besar:</p>
+        <div class="font-serif text-lg font-bold text-emerald-900">
+          Adi Susanto & Tin Marnita Sari
+        </div>
+        <p class="text-xs text-stone-500 font-medium">Wassalamu'alaikum Warahmatullahi Wabarakatuh</p>
+      </div>
+
+      <div class="pt-6 border-t border-stone-200/60 text-[10px] text-stone-400">
+        Dibuat dengan penuh cinta untuk ananda <strong>Khamila Safa Ihza</strong>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================ -->
+  <!-- BOTTOM NAVIGATION DOCK (FLOATING BAR)                        -->
+  <!-- ============================================================ -->
+  <nav class="bottom-nav-dock">
+    <a href="#pembuka" class="nav-item active" title="Pembuka">
+      <i data-lucide="home"></i>
+      <span>Home</span>
+    </a>
+    <a href="#profil" class="nav-item" title="Profil">
+      <i data-lucide="baby"></i>
+      <span>Bayi</span>
+    </a>
+    <a href="#acara" class="nav-item" title="Waktu">
+      <i data-lucide="calendar"></i>
+      <span>Acara</span>
+    </a>
+    <a href="#galeri" class="nav-item" title="Galeri">
+      <i data-lucide="image"></i>
+      <span>Galeri</span>
+    </a>
+    <a href="#rsvp" class="nav-item" title="RSVP">
+      <i data-lucide="message-square"></i>
+      <span>RSVP</span>
+    </a>
+    <a href="#hadiah" class="nav-item" title="Tanda Kasih">
+      <i data-lucide="gift"></i>
+      <span>Kado</span>
+    </a>
+  </nav>
+
+  <!-- ============================================================ -->
+  <!-- LIGHTBOX MODAL FOR GALLERY                                   -->
+  <!-- ============================================================ -->
+  <div id="gallery-modal" class="fixed inset-0 z-[150] bg-black/85 backdrop-blur-sm hidden items-center justify-center p-4">
+    <button id="close-modal" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/20 hover:bg-white/40 text-white flex items-center justify-center transition">
+      <i data-lucide="x" class="w-6 h-6"></i>
+    </button>
+    <img id="modal-img" src="" alt="Enlarged Moment" class="max-w-full max-h-[85vh] rounded-2xl shadow-2xl object-contain">
+  </div>
+
+  <!-- Initialize Lucide Icons & Custom Script -->
+  <script src="script.js"></script>
+  <script>
+    // Inisialisasi ikon Lucide
+    lucide.createIcons();
+  </script>
+</body>
+</html>
